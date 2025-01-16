@@ -15,7 +15,7 @@ export class CatResolver {
   }
 
   @Query(() => [Cat])
-  async cats(): Promise<Cat[]> {
+  async findAllCats(): Promise<Cat[]> {
     return this.catService.findAll();
   }
 
