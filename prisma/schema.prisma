@@ -25,3 +25,10 @@ model Post {
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
 }
+
+model Cat {
+  id    Int    @id @default(autoincrement())
+  name  String
+  age   Int
+  breed String
+}

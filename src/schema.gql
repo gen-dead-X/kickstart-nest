@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cat {
+  age: Int!
+  breed: String!
+  id: Int!
+  name: String!
+}
+
+input CreateCatInput {
+  age: Int!
+  breed: String!
+  name: String!
+}
+
+type Mutation {
+  create(createCatInput: CreateCatInput!): Cat!
+  remove(id: Float!): Cat!
+}
+
+type Query {
+  findAll: [Cat!]!
+  findOne(id: Float!): Cat!
+}
