@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CatService } from './cat.service';
 import { Cat, CreateCatInput } from './dto/cat.dto';
 
@@ -19,12 +19,14 @@ export class CatResolver {
   }
 
   @Query(() => Cat, { name: 'cat' })
-  async findOne(@Args('id', { type: () => Int }) id: number): Promise<Cat> {
+  async findOne(@Args('id', { type: () => String }) id: string): Promise<Cat> {
     return this.catService.findOne(id);
   }
 
   @Mutation(() => Cat)
-  async removeCat(@Args('id', { type: () => Int }) id: number): Promise<Cat> {
+  async removeCat(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<Cat> {
     return this.catService.remove(id);
   }
 }

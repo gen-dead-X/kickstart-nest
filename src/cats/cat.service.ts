@@ -16,13 +16,13 @@ export class CatService {
     return this.prisma.cat.findMany() as unknown as Cat[];
   }
 
-  async findOne(id: number): Promise<Cat> {
+  async findOne(id: string): Promise<Cat> {
     return this.prisma.cat.findUnique({
       where: { id },
     }) as unknown as Cat;
   }
 
-  async remove(id: number): Promise<Cat> {
+  async remove(id: string): Promise<Cat> {
     return this.prisma.cat.delete({
       where: { id },
     }) as unknown as Cat;

@@ -27,7 +27,7 @@ model Post {
 }
 
 model Cat {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   name  String
   age   Int
   breed String

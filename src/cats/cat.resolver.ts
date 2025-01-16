@@ -8,24 +8,24 @@ export class CatResolver {
   constructor(private readonly catService: CatService) {}
 
   @Mutation(() => Cat)
-  async create(
+  async createCat(
     @Args('createCatInput') createCatInput: CreateCatInput,
   ): Promise<Cat> {
     return this.catService.create(createCatInput);
   }
 
   @Query(() => [Cat])
-  async findAll(): Promise<Cat[]> {
+  async cats(): Promise<Cat[]> {
     return this.catService.findAll();
   }
 
   @Query(() => Cat)
-  async findOne(@Args('id') id: number): Promise<Cat> {
+  async findOne(@Args('id', { type: () => String }) id: string): Promise<Cat> {
     return this.catService.findOne(id);
   }
 
   @Mutation(() => Cat)
-  async remove(@Args('id') id: number): Promise<Cat> {
+  async remove(@Args('id', { type: () => String }) id: string): Promise<Cat> {
     return this.catService.remove(id);
   }
 }
