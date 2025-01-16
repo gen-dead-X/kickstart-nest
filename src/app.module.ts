@@ -8,6 +8,7 @@ import { join } from 'node:path';
 import { PrismaService } from './prisma/prisma.service';
 import { CatService } from './cats/cat.service';
 import { CatResolver } from './cats/cat.resolver';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
@@ -18,8 +19,9 @@ import { CatResolver } from './cats/cat.resolver';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      playground: true,
       introspection: true,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
   ],
   controllers: [AppController],
